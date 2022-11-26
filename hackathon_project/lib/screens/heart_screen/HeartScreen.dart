@@ -36,7 +36,7 @@ class _HeartScreen extends State<HeartScreen> {
         child: Column(
           children: [
             SizedBox(height: 20),
-            MyAppBarCampain(),
+            MyAppBarCampain("Your campaigns"),
             SizedBox(height: 20),
             Expanded(
               child: Padding(
