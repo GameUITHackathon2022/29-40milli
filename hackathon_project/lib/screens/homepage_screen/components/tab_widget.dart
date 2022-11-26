@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_scale_tap/flutter_scale_tap.dart';
 import 'package:hackathon_project/API%20services/API%20models/get%20campaign%20list/get_campaign_list_response.dart';
+import 'package:hackathon_project/screens/homepage_screen/all_event_screen.dart';
 import 'package:hackathon_project/screens/homepage_screen/components/event_card.dart';
 import 'package:hackathon_project/utils/app_functions.dart';
 
@@ -9,6 +10,7 @@ import '../event_screen.dart';
 class TabWidget extends StatefulWidget {
   final String title;
   final String decription;
+  final Color color;
   List<Data> campaignDataList = [];
   List<EventCard> _eventCard = [];
 
@@ -17,6 +19,7 @@ class TabWidget extends StatefulWidget {
     this.decription,
     this.campaignDataList,
     this._eventCard,
+    this.color,
   );
 
   @override
@@ -63,7 +66,12 @@ class _TabWidgetState extends State<TabWidget> {
                     ],
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      AppFunctions.pushToScreen(
+                          context,
+                          AllEventScreen(widget.title, widget.campaignDataList,
+                              widget.color));
+                    },
                     child: const Text(
                       "See all >",
                       style: TextStyle(
