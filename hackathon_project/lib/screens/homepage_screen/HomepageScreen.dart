@@ -28,7 +28,7 @@ class _HomepageScreen extends State<HomepageScreen> {
               const SizedBox(height: 20),
               TabWidget("Around my location", "Ho Chi Minh city"),
               const SizedBox(height: 20),
-              TabWidget("New event", "Follow to see new campaigns"),
+              TabWidget("New campaigns", "Follow to see new campaigns"),
             ],
           ),
         ),

@@ -30,14 +30,7 @@ class _TabWidgetState extends State<TabWidget> {
           //campaignDataList.clear();
           setState(() {
             for (var i = 0; i < campaignDataList.length; i++) {
-              _eventCard.add(EventCard(
-                campaignDataList[i].title as String,
-                campaignDataList[i].startTime as int,
-                //host,
-                campaignDataList[i].followers!.length,
-                campaignDataList[i].location as String,
-                campaignDataList[i].image as String,
-              ));
+              _eventCard.add(EventCard(campaignDataList[i]));
             }
           });
         }
