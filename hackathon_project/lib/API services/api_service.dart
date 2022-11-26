@@ -17,6 +17,7 @@ import 'API models/idea/create_idea_response.dart';
 import 'API models/idea/get_idea_response.dart';
 import 'API models/login/login_request.dart';
 import 'API models/login/login_response.dart';
+import 'API models/profile/get_profile_request.dart';
 import 'API models/profile/get_profile_response.dart';
 import 'API models/register/register_request.dart';
 
@@ -67,5 +68,5 @@ abstract class ApiService {
   Future<CreateIdeaResponse> postIdea(@Body() CreateIdeaRequest createIdea);
 
   @GET("/personal/profile")
-  Future<GetProfileResponse> getProfile();
+  Future<GetProfileResponse> getProfile(@Body() GetProfileRequest getProfile);
 }
