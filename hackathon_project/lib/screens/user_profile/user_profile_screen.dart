@@ -92,7 +92,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             height: 30,
           ),
           DefaultTabController(
-              initialIndex: 1,
               length: 2,
               child: TabBar(
                 onTap: (index) {
