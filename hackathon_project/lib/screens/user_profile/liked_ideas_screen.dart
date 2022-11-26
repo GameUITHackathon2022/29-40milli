@@ -6,6 +6,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_scale_tap/flutter_scale_tap.dart';
 import 'package:hackathon_project/API%20services/api_service.dart';
 import 'package:hackathon_project/screens/idea_screen/components/idea_widget.dart';
+import 'package:hackathon_project/screens/user_profile/widgets/idea_liked_widget.dart';
 
 import '../../API services/API models/idea/get_idea_response.dart';
 
@@ -54,8 +55,7 @@ class _LikedIdeasScreenState extends State<LikedIdeasScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 500,
+    return Expanded(
       child: ListView.builder(
           itemCount: ideaList.length,
           itemBuilder: ((context, index) {
@@ -64,7 +64,7 @@ class _LikedIdeasScreenState extends State<LikedIdeasScreen> {
                 onPressed: () {},
                 child: Container(
                   margin: EdgeInsets.all(15),
-                  child: IdeaWidget(
+                  child: IdeaLikedWidget(
                       avtUrl: ideaList[index].userImage.toString(),
                       title: ideaList[index].title as String,
                       content: ideaList[index].description as String,

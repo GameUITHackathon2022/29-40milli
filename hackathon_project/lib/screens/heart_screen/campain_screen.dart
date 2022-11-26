@@ -9,6 +9,10 @@ class CampainScreen extends StatelessWidget {
   CampainScreen(
     this.campaignData,
   );
+  TextStyle titleTextstyle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+  );
   TextStyle inFoTextstyle = TextStyle(
     fontSize: 18,
   );
@@ -54,9 +58,10 @@ class CampainScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 25),
                 child: Column(children: [
-                  SizedBox(height: 10),
+                  SizedBox(height: 20),
                   Text(
                     campaignData.title as String,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 30,
@@ -64,36 +69,78 @@ class CampainScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 30),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Date:  " + DateFormat.yMMMd().format(date).toString(),
-                        style: inFoTextstyle,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Text(
-                        "Location:  " + (campaignData.location as String),
-                        style: inFoTextstyle,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Text(
-                        "Num of member:  " +
+                      Row(
+                        children: [
+                          Icon(Icons.person_outline, size: 30),
+                          SizedBox(width: 10),
+                          Text(
                             campaignData.followers!.length.toString(),
+                            style: inFoTextstyle,
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: 40,
+                        width: 130,
+                        child: ElevatedButton(
+                          child: Text(
+                            "ENROLLED",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          onPressed: null,
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Text(
+                        "Location:  ",
+                        style: titleTextstyle,
+                      ),
+                      Text(
+                        (campaignData.location as String),
                         style: inFoTextstyle,
                       ),
                     ],
                   ),
-                  SizedBox(height: 30),
-                  Text(
-                    campaignData.description as String,
-                    style: inFoTextstyle,
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Text(
+                        "Date and time:  ",
+                        style: titleTextstyle,
+                      ),
+                      Text(
+                        DateFormat.yMMMMEEEEd().format(date).toString(),
+                        style: inFoTextstyle,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Text(
+                        "Decription:  ",
+                        style: titleTextstyle,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.87,
+                        child: Text(
+                          campaignData.description as String,
+                          textAlign: TextAlign.start,
+                          style: inFoTextstyle,
+                        ),
+                      ),
+                    ],
                   ),
                 ]),
               )

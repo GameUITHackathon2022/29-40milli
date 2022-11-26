@@ -8,6 +8,7 @@ import 'package:hackathon_project/API%20services/API%20models/profile/get_profil
 import 'package:hackathon_project/API%20services/api_service.dart';
 import 'package:hackathon_project/screens/user_profile/achievements_screen.dart';
 import 'package:hackathon_project/screens/user_profile/liked_ideas_screen.dart';
+import 'package:hackathon_project/screens/user_profile/widgets/profile_appbar.dart';
 
 class UserProfileScreen extends StatefulWidget {
   bool isAchievementScreen = true;
@@ -32,16 +33,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () => {},
-        ),
-        title: Text("My Profile"),
-      ),
       body: Container(
         padding: EdgeInsets.all(30),
         child: Column(children: [
+          ProfileAppBar(),
+          SizedBox(height: 40),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -96,6 +92,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             height: 30,
           ),
           DefaultTabController(
+              initialIndex: 1,
               length: 2,
               child: TabBar(
                 onTap: (index) {
