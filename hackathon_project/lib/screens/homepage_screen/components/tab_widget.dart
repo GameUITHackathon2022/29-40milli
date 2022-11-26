@@ -28,38 +28,41 @@ class _TabWidgetState extends State<TabWidget> {
         child: Column(
           children: [
             // text and see all
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.title,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.title,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    Text(
-                      widget.decription,
-                      style: const TextStyle(
-                        fontSize: 13,
+                      Text(
+                        widget.decription,
+                        style: const TextStyle(
+                          fontSize: 13,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    "See all >",
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.blueAccent,
-                    ),
+                    ],
                   ),
-                )
-              ],
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "See all >",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.blueAccent,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
             // cac event
             SizedBox(height: 25),
