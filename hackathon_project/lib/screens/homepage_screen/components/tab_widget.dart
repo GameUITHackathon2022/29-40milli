@@ -9,11 +9,17 @@ import '../event_screen.dart';
 class TabWidget extends StatefulWidget {
   final String title;
   final String decription;
+  final Color color;
   List<Data> campaignDataList = [];
   List<EventCard> _eventCard = [];
 
   TabWidget(
-      this.title, this.decription, this.campaignDataList, this._eventCard);
+    this.title,
+    this.decription,
+    this.color,
+    this.campaignDataList,
+    this._eventCard,
+  );
 
   @override
   State<TabWidget> createState() => _TabWidgetState();
