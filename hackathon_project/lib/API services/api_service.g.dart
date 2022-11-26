@@ -163,11 +163,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<GetProfileResponse> getProfile() async {
+  Future<GetProfileResponse> getProfile(getProfile) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
+    _data.addAll(getProfile.toJson());
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<GetProfileResponse>(Options(
       method: 'GET',
