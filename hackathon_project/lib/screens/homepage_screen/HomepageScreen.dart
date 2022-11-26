@@ -82,4 +82,28 @@ class _HomepageScreen extends State<HomepageScreen> {
     }
   }
 
+
+  Future<void> getIdea() async {
+    EasyLoading.show(maskType: EasyLoadingMaskType.black);
+    try {
+      await ApiService.create().getIdeaList().then((dataItem) {
+        bool? success = dataItem.success;
+        if (success == true) {
+
+        }
+      });
+    } catch (obj) {
+      print("${obj}");
+      switch (obj.runtimeType) {
+        case DioError:
+        // Here's the sample to get the failed response error code and message
+          final res = (obj as DioError).response;
+          print(res!.statusCode);
+          break;
+        default:
+      }
+    } finally {
+      EasyLoading.dismiss();
+    }
+  }
 }

@@ -1,8 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:hackathon_project/API%20services/API%20models/idea/create_idea_request.dart';
 import 'package:hackathon_project/API%20services/api_service.dart';
+import 'package:hackathon_project/utils/app_functions.dart';
 
 class NewIdeaScreen extends StatefulWidget {
   var _titleController = TextEditingController();
@@ -21,7 +24,8 @@ class _NewIdeaScreenState extends State<NewIdeaScreen> {
     // showAlert(context);
     try {
       await ApiService.create()
-          .postIdea(CreateIdeaRequest("vuhuyhoang", "null", "hello world", "description hello"))
+          .postIdea(CreateIdeaRequest("HN", "null",
+              widget._titleController.text, widget._desController.text))
           .then((dataItem) {
         bool? success = dataItem.success;
         if (success == true) {
@@ -34,7 +38,7 @@ class _NewIdeaScreenState extends State<NewIdeaScreen> {
       print("${obj}");
       switch (obj.runtimeType) {
         case DioError:
-        // Here's the sample to get the failed response error code and message
+          // Here's the sample to get the failed response error code and message
           final res = (obj as DioError).response;
           print(res!.statusCode);
           break;
@@ -44,6 +48,7 @@ class _NewIdeaScreenState extends State<NewIdeaScreen> {
       EasyLoading.dismiss();
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,7 +113,9 @@ class _NewIdeaScreenState extends State<NewIdeaScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      if (widget._formKey.currentState!.validate()) {}
+                      if (widget._formKey.currentState!.validate()) {
+                        postIdea();
+                      }
                     },
                     child: const Text('Submit'),
                   ),

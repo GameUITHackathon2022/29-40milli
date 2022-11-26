@@ -3,12 +3,14 @@ import 'dart:ffi';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:hackathon_project/API%20services/API%20models/idea/idea_response.dart';
+import 'package:flutter_scale_tap/flutter_scale_tap.dart';
 import 'package:hackathon_project/API%20services/api_service.dart';
 import 'package:hackathon_project/screens/idea_screen/components/button.dart';
 import 'package:hackathon_project/screens/idea_screen/components/idea_widget.dart';
 import 'package:hackathon_project/screens/idea_screen/new_idea_screen.dart';
 import 'package:hackathon_project/screens/idea_screen/user_ideas_screen.dart';
+
+import '../../API services/API models/idea/get_idea_response.dart';
 
 class IdeaNewsfeedScreen extends StatefulWidget {
   IdeaNewsfeedScreen({super.key});
@@ -26,7 +28,9 @@ class _IdeaNewsfeedScreenState extends State<IdeaNewsfeedScreen> {
       await ApiService.create().getIdeaList().then((dataItem) {
         bool? success = dataItem.success;
         if (success == true) {
-          ideaList = dataItem.data!;
+          setState(() {
+            ideaList = dataItem.data!;
+          });
         }
       });
     } catch (obj) {
@@ -47,7 +51,7 @@ class _IdeaNewsfeedScreenState extends State<IdeaNewsfeedScreen> {
   @override
   void initState() {
     getIdea();
-    setState(() {}); // TODO: implement initState
+
     super.initState();
   }
 
@@ -70,13 +74,16 @@ class _IdeaNewsfeedScreenState extends State<IdeaNewsfeedScreen> {
           Expanded(
             child: ListView.builder(
                 itemCount: ideaList.length,
-                itemBuilder: ((context, index) => Container(
-                      margin: EdgeInsets.all(15),
-                      child: IdeaWidget(
-                          avtUrl: ideaList[index].userImage.toString(),
-                          title: ideaList[index].title as String,
-                          content: ideaList[index].description as String,
-                          isFavorite: false),
+                itemBuilder: ((context, index) => ScaleTap(
+                      onPressed: () {},
+                      child: Container(
+                        margin: EdgeInsets.all(15),
+                        child: IdeaWidget(
+                            avtUrl: ideaList[index].userImage.toString(),
+                            title: ideaList[index].title as String,
+                            content: ideaList[index].description as String,
+                            isFavorite: false),
+                      ),
                     ))),
           ),
         ],
