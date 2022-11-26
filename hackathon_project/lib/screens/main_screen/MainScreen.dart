@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon_project/screens/account_screen/AccountScreen.dart';
 import 'package:hackathon_project/screens/heart_screen/HeartScreen.dart';
@@ -13,7 +14,8 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreen extends State<MainScreen> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomepageScreen(),
     LightbulbScreen(),
@@ -32,36 +34,42 @@ class _MainScreen extends State<MainScreen> {
     super.initState();
   }
 
+  Widget iconDownLoad(IconData icon) {
+    return Container(
+      margin: EdgeInsets.only(top: 2),
+      height: 30,
+      child: Icon(icon),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
+      extendBody: true,
       body: SafeArea(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: IndexedStack(
+          children: <Widget>[
+            HomepageScreen(),
+            LightbulbScreen(),
+            HeartScreen(),
+            AccountScreen(),
+          ],
+          index: _selectedIndex,
+        ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        showSelectedLabels: false, //selected item
-        showUnselectedLabels: false, //unselected item
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'null',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.lightbulb),
-            label: 'null',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.heart_broken),
-            label: 'null',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle_outlined),
-            label: 'null',
-          ),
+      bottomNavigationBar: CurvedNavigationBar(
+        items: [
+          iconDownLoad(Icons.home),
+          iconDownLoad(Icons.lightbulb),
+          iconDownLoad(Icons.calendar_month),
+          iconDownLoad(Icons.account_circle_outlined),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.pinkAccent,
-        unselectedItemColor: Colors.blueGrey,
+        color: Colors.greenAccent,
+        backgroundColor: Colors.transparent,
+        animationDuration: const Duration(milliseconds: 500),
+        index: _selectedIndex,
+        height: 60,
         onTap: _onItemTapped,
       ),
     );

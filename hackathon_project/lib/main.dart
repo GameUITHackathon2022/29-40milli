@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: UserProfileScreen(),
+      theme: ThemeData(primarySwatch: Colors.green),
       builder: EasyLoading.init(),
       debugShowCheckedModeBanner: false,
     );
@@ -42,6 +43,8 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
+      extendBody: true,
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
