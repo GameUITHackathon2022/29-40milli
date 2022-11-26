@@ -6,6 +6,7 @@ import 'package:hackathon_project/screens/homepage_screen/HomepageScreen.dart';
 import 'package:hackathon_project/screens/lightbulb_screen/LightbulbScreen.dart';
 
 import '../idea_screen/idea_newsfeed_screen.dart';
+import '../user_profile/user_profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -55,7 +56,7 @@ class _MainScreen extends State<MainScreen> {
             HomepageScreen(),
             IdeaNewsfeedScreen(),
             HeartScreen(),
-            AccountScreen(),
+            UserProfileScreen(),
           ],
           index: _selectedIndex,
         ),
