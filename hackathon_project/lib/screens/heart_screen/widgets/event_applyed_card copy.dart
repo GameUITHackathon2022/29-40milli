@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_project/API%20services/API%20models/profile/get_profile_response.dart';
 import 'package:intl/intl.dart';
 import '../../../API services/API models/get campaign list/get_campaign_list_response.dart';
 
-class EventApplyedCard extends StatelessWidget {
-  final Data campaignData;
-  EventApplyedCard(this.campaignData);
+class EventApplyedCard_2 extends StatelessWidget {
+  final ParticipatedCampaign campaignData;
+  EventApplyedCard_2(this.campaignData);
 
   @override
   Widget build(BuildContext context) {

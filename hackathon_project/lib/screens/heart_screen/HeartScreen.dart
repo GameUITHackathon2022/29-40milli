@@ -2,13 +2,14 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_scale_tap/flutter_scale_tap.dart';
+import 'package:hackathon_project/API%20services/API%20models/profile/get_profile_response.dart';
 import 'package:hackathon_project/screens/heart_screen/widgets/event_applyed_card.dart';
 import 'package:hackathon_project/screens/heart_screen/widgets/my_app_bar.dart';
-import 'package:hackathon_project/API%20services/API%20models/get%20campaign%20list/get_campaign_list_response.dart';
 
 import '../../API services/api_service.dart';
 import '../../utils/app_functions.dart';
 import '../homepage_screen/event_screen.dart';
+import 'widgets/event_applyed_card copy.dart';
 
 class HeartScreen extends StatefulWidget {
   const HeartScreen({super.key});
@@ -18,13 +19,14 @@ class HeartScreen extends StatefulWidget {
 }
 
 class _HeartScreen extends State<HeartScreen> {
-  List<EventApplyedCard> _eventApplyedCards = [];
-  List<Data> _eventDataList = [];
+  List<EventApplyedCard_2> _eventApplyedCards = [];
+  List<ParticipatedCampaign> _eventDataList = [];
 
   @override
   void initState() {
     // TODO: implement initState
-    getCampaign();
+    // getCampaign();
+    getProfile();
     super.initState();
   }
 
@@ -44,8 +46,8 @@ class _HeartScreen extends State<HeartScreen> {
                   itemBuilder: (context, index) {
                     return ScaleTap(
                         onPressed: () {
-                          AppFunctions.pushToScreen(
-                              context, EventScreen(_eventDataList[index]));
+                          // AppFunctions.pushToScreen(
+                          //     context, EventScreen(_eventDataList[index]));
                         },
                         child: _eventApplyedCards[index]);
                   },
@@ -59,17 +61,46 @@ class _HeartScreen extends State<HeartScreen> {
     );
   }
 
-  Future<void> getCampaign() async {
+  // Future<void> getCampaign() async {
+  //   EasyLoading.show(maskType: EasyLoadingMaskType.black);
+  //   try {
+  //     await ApiService.create().getCampaignList().then((dataItem) {
+  //       bool? success = dataItem.success;
+  //       if (success == true) {
+  //         _eventDataList = dataItem.data!;
+  //         //campaignDataList.clear();
+  //         setState(() {
+  //           for (var i = 0; i < _eventDataList.length; i++) {
+  //             _eventApplyedCards.add(EventApplyedCard(_eventDataList[i]));
+  //           }
+  //         });
+  //       }
+  //     });
+  //   } catch (obj) {
+  //     print("${obj}");
+  //     switch (obj.runtimeType) {
+  //       case DioError:
+  //         // Here's the sample to get the failed response error code and message
+  //         final res = (obj as DioError).response;
+  //         print(res!.statusCode);
+  //         break;
+  //       default:
+  //     }
+  //   } finally {
+  //     EasyLoading.dismiss();
+  //   }
+  // }
+
+  Future<void> getProfile() async {
     EasyLoading.show(maskType: EasyLoadingMaskType.black);
     try {
-      await ApiService.create().getCampaignList().then((dataItem) {
+      await ApiService.create().getProfile().then((dataItem) {
         bool? success = dataItem.success;
         if (success == true) {
-          _eventDataList = dataItem.data!;
-          //campaignDataList.clear();
+          _eventDataList = dataItem.data!.participatedCampaign!;
           setState(() {
             for (var i = 0; i < _eventDataList.length; i++) {
-              _eventApplyedCards.add(EventApplyedCard(_eventDataList[i]));
+              _eventApplyedCards.add(EventApplyedCard_2(_eventDataList[i]));
             }
           });
         }
