@@ -4,6 +4,7 @@ import 'package:hackathon_project/screens/account_screen/AccountScreen.dart';
 import 'package:hackathon_project/screens/heart_screen/HeartScreen.dart';
 import 'package:hackathon_project/screens/homepage_screen/HomepageScreen.dart';
 import 'package:hackathon_project/screens/lightbulb_screen/LightbulbScreen.dart';
+import 'package:hackathon_project/screens/user_profile/user_profile_screen.dart';
 
 import '../idea_screen/idea_newsfeed_screen.dart';
 import '../user_profile/user_profile_screen.dart';
