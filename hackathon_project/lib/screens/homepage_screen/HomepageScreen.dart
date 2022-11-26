@@ -41,9 +41,14 @@ class _HomepageScreen extends State<HomepageScreen> {
               SearchBar(),
               // text Around my location and widget
               const SizedBox(height: 20),
-              TabWidget("Around my location", "Ho Chi Minh city", campaignDataList, _eventCard),
+              TabWidget("Around my location", "Ho Chi Minh city",
+                  Color(0xff61C5A0), campaignDataList, _eventCard),
               const SizedBox(height: 20),
-              TabWidget("New event", "Follow to see new campaigns", campaignDataList, _eventCard),
+              TabWidget("Campaigns", "Follow to see new campaigns",
+                  Color(0xffFF6D3B), campaignDataList, _eventCard),
+              SizedBox(height: 50),
+              TabWidget("Challenges", "Follow to see new challenges",
+                  Color(0xff61C5A0), campaignDataList, _eventCard),
               SizedBox(height: 50),
             ],
           ),
@@ -71,7 +76,7 @@ class _HomepageScreen extends State<HomepageScreen> {
       print("${obj}");
       switch (obj.runtimeType) {
         case DioError:
-        // Here's the sample to get the failed response error code and message
+          // Here's the sample to get the failed response error code and message
           final res = (obj as DioError).response;
           print(res!.statusCode);
           break;
@@ -81,5 +86,4 @@ class _HomepageScreen extends State<HomepageScreen> {
       EasyLoading.dismiss();
     }
   }
-
 }
