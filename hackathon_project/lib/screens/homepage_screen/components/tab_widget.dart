@@ -20,57 +20,6 @@ class TabWidget extends StatefulWidget {
 }
 
 class _TabWidgetState extends State<TabWidget> {
-<<<<<<< Updated upstream
-=======
-  // List<EventCard> _eventCard = [
-  List<Data> campaignDataList = [];
-
-  List<EventCard> _eventCard = [];
-
-  Future<void> getCampaign() async {
-    EasyLoading.show(maskType: EasyLoadingMaskType.black);
-    try {
-      await ApiService.create().getCampaignList().then((dataItem) {
-        bool? success = dataItem.success;
-        if (success == true) {
-          campaignDataList = dataItem.data!;
-
-          setState(() {
-            for (var i = 0; i < campaignDataList.length; i++) {
-              _eventCard.add(EventCard(
-                campaignDataList[i].title as String,
-                campaignDataList[i].startTime as int,
-                //host,
-                campaignDataList[i].followers!.length,
-                campaignDataList[i].location as String,
-                campaignDataList[i].image as String,
-              ));
-            }
-          });
-        }
-      });
-    } catch (obj) {
-      print("${obj}");
-      switch (obj.runtimeType) {
-        case DioError:
-          // Here's the sample to get the failed response error code and message
-          final res = (obj as DioError).response;
-          print(res!.statusCode);
-          break;
-        default:
-      }
-    } finally {
-      EasyLoading.dismiss();
-    }
-  }
-
->>>>>>> Stashed changes
-  @override
-  void initState() {
-    getCampaign();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
