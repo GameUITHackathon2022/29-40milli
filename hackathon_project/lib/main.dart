@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:hackathon_project/screens/idea_screen/idea_newsfeed_screen.dart';
 import 'package:hackathon_project/screens/login_screen/LoginScreen.dart';
+import 'package:hackathon_project/screens/user_profile/user_profile_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,8 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Splash(),
+      home: UserProfileScreen(),
       builder: EasyLoading.init(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -30,10 +33,8 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => const LoginScreen()));
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const LoginScreen()));
     });
     super.initState();
   }
