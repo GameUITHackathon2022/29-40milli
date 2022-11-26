@@ -5,8 +5,9 @@ import '../../../API services/API models/get campaign list/get_campaign_list_res
 
 class EventCard extends StatelessWidget {
   final Data campaignData;
-  EventCard(this.campaignData);
+  final Color color;
 
+  EventCard(this.campaignData, this.color);
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +28,13 @@ class EventCard extends StatelessWidget {
             ),
           ],
         ),
-
         child: ClipRRect(
           borderRadius: BorderRadius.circular(15),
           child: Container(
             height: 200,
             width: 270,
             decoration: BoxDecoration(
-              color: Colors.greenAccent,
+              color: color,
               borderRadius: BorderRadius.circular(15),
             ),
             child: Column(
@@ -58,8 +58,7 @@ class EventCard extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 14,
                             color: Colors.blue[900],
-                            fontWeight: FontWeight.w500
-                        ),
+                            fontWeight: FontWeight.w500),
                       ),
                       SizedBox(height: 5),
                       Text(
@@ -78,8 +77,7 @@ class EventCard extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 12,
                                 fontStyle: FontStyle.italic,
-                                color: Colors.blueGrey
-                            ),
+                                color: Colors.blueGrey),
                           ),
                           Row(
                             children: [
