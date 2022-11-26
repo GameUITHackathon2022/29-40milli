@@ -21,7 +21,14 @@ class UserProfileScreen extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  child: Image.network('https://picsum.photos/id/237/200/300'),
+                  width: 100,
+                  height: 100,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                  child: Image.network(
+                    'https://picsum.photos/id/237/200/300',
+                    fit: BoxFit.cover,
+                  ),
                 )
               ],
             ),

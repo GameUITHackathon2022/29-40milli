@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:hackathon_project/API%20services/api_service.dart';
 
 class NewIdeaScreen extends StatefulWidget {
   var _titleController = TextEditingController();
@@ -14,6 +16,34 @@ class NewIdeaScreen extends StatefulWidget {
 }
 
 class _NewIdeaScreenState extends State<NewIdeaScreen> {
+  Future<void> postIdea() async {
+    EasyLoading.show(maskType: EasyLoadingMaskType.black);
+    // showAlert(context);
+    try {
+      await ApiService.create()
+          .postIdea(CreateIdeaRequest("vuhuyhoang", "null", "hello world", "description hello"))
+          .then((dataItem) {
+        bool? success = dataItem.success;
+        if (success == true) {
+          AppFunctions.showAlert(dataItem.message.toString(), context);
+        } else {
+          AppFunctions.showAlert(dataItem.message.toString(), context);
+        }
+      });
+    } catch (obj) {
+      print("${obj}");
+      switch (obj.runtimeType) {
+        case DioError:
+        // Here's the sample to get the failed response error code and message
+          final res = (obj as DioError).response;
+          print(res!.statusCode);
+          break;
+        default:
+      }
+    } finally {
+      EasyLoading.dismiss();
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
