@@ -11,6 +11,7 @@ import 'package:retrofit/http.dart';
 
 import 'API models/create user/create_user_request.dart';
 import 'API models/create user/create_user_response.dart';
+import 'API models/get campaign list/get_campaign_list_response.dart';
 import 'API models/login/login_request.dart';
 import 'API models/login/login_response.dart';
 import 'API models/register/register_request.dart';
@@ -51,4 +52,7 @@ abstract class ApiService {
 
   @POST("/users/create_user")
   Future<CreateUserResponse> postCreateUser(@Body() CreateUserRequest createUser);
+
+  @GET("/campaign/get_campaign")
+  Future<GetCampaignListResponse> getCampaignList();
 }
