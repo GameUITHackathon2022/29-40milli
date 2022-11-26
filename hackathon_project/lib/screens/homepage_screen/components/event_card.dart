@@ -1,90 +1,105 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_project/screens/homepage_screen/event_screen.dart';
 import 'package:intl/intl.dart';
+import '../../../API services/API models/get campaign list/get_campaign_list_response.dart';
 
 class EventCard extends StatelessWidget {
-  final String title;
-  final int time;
-  final String imageuUrl;
-  //final String host;
-  final int numOfmenber;
-  final String location;
+  final Data campaignData;
+  EventCard(this.campaignData);
 
-  EventCard(
-      this.title, this.time, this.numOfmenber, this.location, this.imageuUrl);
-
-  TextStyle inFoTextstyle = TextStyle(
-    fontSize: 17,
-  );
 
   @override
   Widget build(BuildContext context) {
-    var date = new DateTime.fromMicrosecondsSinceEpoch(time);
+    var date =
+        DateTime.fromMillisecondsSinceEpoch(campaignData.startTime as int);
     return Padding(
-      padding: const EdgeInsets.only(right: 15),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(15),
-        child: Container(
-          height: 200,
-          width: 270,
-          decoration: BoxDecoration(
-            color: Colors.greenAccent,
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Column(
-            children: [
-              Container(
-                height: 150,
-                width: 270,
-                child: Image.network(
-                  imageuUrl,
-                  fit: BoxFit.cover,
+      padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 3,
+              blurRadius: 3,
+              offset: Offset(0, 1), // changes position of shadow
+            ),
+          ],
+        ),
+
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(15),
+          child: Container(
+            height: 200,
+            width: 270,
+            decoration: BoxDecoration(
+              color: Colors.greenAccent,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Column(
+              children: [
+                Container(
+                  height: 150,
+                  width: 270,
+                  child: Image.network(
+                    "${campaignData.image}",
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-              // ten
-              // thoi gian
-              // nguoi to chuc
-              // dia diem + so luong nguoi
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: inFoTextstyle,
-                    ),
-                    Text(
-                      DateFormat.yMMMd().format(date).toString(),
-                      style: inFoTextstyle,
-                    ),
-                    // Text(
-                    //   host,
-                    //   style: inFoTextstyle,
-                    // ),
-                    SizedBox(height: 5),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          location,
-                          style: inFoTextstyle,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 10),
+                      Text(
+                        "${campaignData.title}",
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.blue[900],
+                            fontWeight: FontWeight.w500
                         ),
-                        Row(
-                          children: [
-                            Icon(Icons.person, size: 20),
-                            SizedBox(width: 5),
-                            Text(
-                              numOfmenber.toString(),
-                              style: inFoTextstyle,
+                      ),
+                      SizedBox(height: 5),
+                      Text(
+                        DateFormat.yMMMd().format(date).toString(),
+                        //date.toString(),
+                        style: TextStyle(
+                          fontSize: 12,
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "${campaignData.location}",
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontStyle: FontStyle.italic,
+                                color: Colors.blueGrey
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.person, size: 20),
+                              SizedBox(width: 5),
+                              Text(
+                                "${campaignData.followers?.length}",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
