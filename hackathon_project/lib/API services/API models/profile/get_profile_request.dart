@@ -1,7 +1,7 @@
 class GetProfileRequest {
   String? username;
 
-  GetProfileRequest({this.username});
+  GetProfileRequest(this.username);
 
   GetProfileRequest.fromJson(Map<String, dynamic> json) {
     username = json['username'];

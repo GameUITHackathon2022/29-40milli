@@ -171,7 +171,7 @@ class _ApiService implements ApiService {
     _data.addAll(getProfile.toJson());
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<GetProfileResponse>(Options(
-      method: 'GET',
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )

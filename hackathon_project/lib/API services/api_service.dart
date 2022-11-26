@@ -67,6 +67,6 @@ abstract class ApiService {
   @POST("/idea/post_idea")
   Future<CreateIdeaResponse> postIdea(@Body() CreateIdeaRequest createIdea);
 
-  @GET("/personal/profile")
+  @POST("/personal/profile")
   Future<GetProfileResponse> getProfile(@Body() GetProfileRequest getProfile);
 }
