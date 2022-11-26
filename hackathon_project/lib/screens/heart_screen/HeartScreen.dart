@@ -69,7 +69,11 @@ class _HeartScreen extends State<HeartScreen> {
           _eventDataList = dataItem.data!.participatedCampaign!;
           setState(() {
             for (var i = 0; i < _eventDataList.length; i++) {
-              _eventApplyedCards.add(EventApplyedCard(_eventDataList[i]));
+              var date = DateTime.fromMillisecondsSinceEpoch(
+                  _eventDataList[i].startTime as int);
+              var timeRemaining = date.difference(DateTime.now());
+              if (date.compareTo(DateTime.now()) > 0)
+                _eventApplyedCards.add(EventApplyedCard(_eventDataList[i]));
             }
           });
         }
