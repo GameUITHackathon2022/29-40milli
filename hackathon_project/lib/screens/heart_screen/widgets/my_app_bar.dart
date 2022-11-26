@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MyAppBarCampain extends StatelessWidget {
-  const MyAppBarCampain({super.key});
+  final String title;
+  MyAppBarCampain(this.title);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class MyAppBarCampain extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
-            "Your campaigns",
+            title,
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,

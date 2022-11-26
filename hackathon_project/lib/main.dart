@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MainScreen(),
+      home: LoginScreen(),
       theme: ThemeData(primarySwatch: Colors.green),
       builder: EasyLoading.init(),
       debugShowCheckedModeBanner: false,
