@@ -48,7 +48,7 @@ class _HomepageScreen extends State<HomepageScreen> {
                   Color(0xffFF6D3B), campaignDataList, _eventCard),
               SizedBox(height: 50),
               TabWidget("Challenges", "Follow to see new challenges",
-                  Color(0xff61C5A0), campaignDataList, _eventCard),
+                  Color(0xffFACD74), campaignDataList, _eventCard),
               SizedBox(height: 50),
             ],
           ),
@@ -67,7 +67,10 @@ class _HomepageScreen extends State<HomepageScreen> {
           //campaignDataList.clear();
           setState(() {
             for (var i = 0; i < campaignDataList.length; i++) {
-              _eventCard.add(EventCard(campaignDataList[i]));
+              _eventCard.add(EventCard(
+                campaignDataList[i],
+                Color(0xff61C5A0),
+              ));
             }
           });
         }

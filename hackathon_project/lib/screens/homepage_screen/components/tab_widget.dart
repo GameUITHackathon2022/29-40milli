@@ -26,6 +26,21 @@ class TabWidget extends StatefulWidget {
 }
 
 class _TabWidgetState extends State<TabWidget> {
+  void changeColor() {
+    setState(() {
+      for (var i = 0; i < widget.campaignDataList.length; i++) {
+        widget._eventCard
+            .add(EventCard(widget.campaignDataList[i], widget.color));
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    changeColor();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
