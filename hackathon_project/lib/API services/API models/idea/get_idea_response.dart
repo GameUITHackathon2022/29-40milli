@@ -1,11 +1,11 @@
-class GetCampaignListResponse {
+class IdeaResponse {
   bool? success;
   String? message;
   List<Data>? data;
 
-  GetCampaignListResponse({this.success, this.message, this.data});
+  IdeaResponse({this.success, this.message, this.data});
 
-  GetCampaignListResponse.fromJson(Map<String, dynamic> json) {
+  IdeaResponse.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     message = json['message'];
     if (json['data'] != null) {
@@ -29,44 +29,36 @@ class GetCampaignListResponse {
 
 class Data {
   String? sId;
+  String? username;
+  String? userImage;
   String? title;
   String? description;
-  int? startTime;
-  String? image;
-  String? location;
-  List<String>? followers;
   int? iV;
 
   Data(
       {this.sId,
-      this.title,
-      this.description,
-      this.startTime,
-      this.image,
-      this.location,
-      this.followers,
-      this.iV});
+        this.username,
+        this.userImage,
+        this.title,
+        this.description,
+        this.iV});
 
   Data.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
+    username = json['username'];
+    userImage = json['user_image'];
     title = json['title'];
     description = json['description'];
-    startTime = json['start_time'];
-    image = json['image'];
-    location = json['location'];
-    followers = json['followers'].cast<String>();
     iV = json['__v'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['_id'] = this.sId;
+    data['username'] = this.username;
+    data['user_image'] = this.userImage;
     data['title'] = this.title;
     data['description'] = this.description;
-    data['start_time'] = this.startTime;
-    data['image'] = this.image;
-    data['location'] = this.location;
-    data['followers'] = this.followers;
     data['__v'] = this.iV;
     return data;
   }
