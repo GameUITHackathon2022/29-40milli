@@ -18,7 +18,7 @@ class EventCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var date = new DateTime.fromMicrosecondsSinceEpoch(time);
+    var date = DateTime.fromMillisecondsSinceEpoch(time);
     return Padding(
       padding: const EdgeInsets.only(right: 15),
       child: ClipRRect(
@@ -49,12 +49,15 @@ class EventCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(height: 10),
                     Text(
                       title,
                       style: inFoTextstyle,
                     ),
+                    SizedBox(height: 5),
                     Text(
                       DateFormat.yMMMd().format(date).toString(),
+                      //date.toString(),
                       style: inFoTextstyle,
                     ),
                     // Text(

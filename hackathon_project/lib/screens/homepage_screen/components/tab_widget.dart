@@ -10,7 +10,6 @@ class TabWidget extends StatefulWidget {
   final String decription;
 
   TabWidget(this.title, this.decription);
-
   @override
   State<TabWidget> createState() => _TabWidgetState();
 }
@@ -28,16 +27,19 @@ class _TabWidgetState extends State<TabWidget> {
         bool? success = dataItem.success;
         if (success == true) {
           campaignDataList = dataItem.data!;
-          for (var i = 0; i < campaignDataList.length; i++) {
-            _eventCard.add(EventCard(
-              campaignDataList[i].title as String,
-              campaignDataList[i].startTime as int,
-              //host,
-              campaignDataList[i].followers!.length,
-              campaignDataList[i].location as String,
-              campaignDataList[i].image as String,
-            ));
-          }
+          //campaignDataList.clear();
+          setState(() {
+            for (var i = 0; i < campaignDataList.length; i++) {
+              _eventCard.add(EventCard(
+                campaignDataList[i].title as String,
+                campaignDataList[i].startTime as int,
+                //host,
+                campaignDataList[i].followers!.length,
+                campaignDataList[i].location as String,
+                campaignDataList[i].image as String,
+              ));
+            }
+          });
         }
       });
     } catch (obj) {
@@ -56,10 +58,14 @@ class _TabWidgetState extends State<TabWidget> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    getCampaign();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    setState(() {
-      getCampaign();
-    });
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: Column(
@@ -108,7 +114,7 @@ class _TabWidgetState extends State<TabWidget> {
                 itemBuilder: (context, index) {
                   return _eventCard[index];
                 },
-                itemCount: 3,
+                itemCount: _eventCard.length,
               ),
             ),
           ),
