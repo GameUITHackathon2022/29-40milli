@@ -15,6 +15,9 @@ class EventScreen extends StatelessWidget {
     var date =
         DateTime.fromMillisecondsSinceEpoch(campaignData.startTime as int);
     return Scaffold(
+      appBar: AppBar(
+        title: Text(campaignData.title as String),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [

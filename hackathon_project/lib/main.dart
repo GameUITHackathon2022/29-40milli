@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:hackathon_project/screens/login_screen/LoginScreen.dart';
 import 'package:hackathon_project/screens/homepage_screen/HomepageScreen.dart';
+import 'package:hackathon_project/screens/main_screen/MainScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomepageScreen(),
+      theme: ThemeData(primarySwatch: Colors.green),
+      home: MainScreen(),
       builder: EasyLoading.init(),
     );
   }
@@ -41,6 +43,8 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
+      extendBody: true,
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
