@@ -12,6 +12,7 @@ import 'package:retrofit/http.dart';
 import 'API models/create user/create_user_request.dart';
 import 'API models/create user/create_user_response.dart';
 import 'API models/get campaign list/get_campaign_list_response.dart';
+import 'API models/idea/idea_response.dart';
 import 'API models/login/login_request.dart';
 import 'API models/login/login_response.dart';
 import 'API models/register/register_request.dart';
@@ -55,4 +56,7 @@ abstract class ApiService {
 
   @GET("/campaign/get_campaign")
   Future<GetCampaignListResponse> getCampaignList();
+
+  @GET("/idea/get_idea")
+  Future<IdeaResponse> getIdeaList();
 }
