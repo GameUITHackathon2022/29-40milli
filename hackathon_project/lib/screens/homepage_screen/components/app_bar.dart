@@ -33,7 +33,7 @@ class MyAppBar extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xffFF6D3B),
+                  color: Color(0xffFACD74),
                 ),
               ),
               Text(

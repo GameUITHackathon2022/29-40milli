@@ -9,14 +9,12 @@ import '../event_screen.dart';
 class TabWidget extends StatefulWidget {
   final String title;
   final String decription;
-  final Color color;
   List<Data> campaignDataList = [];
   List<EventCard> _eventCard = [];
 
   TabWidget(
     this.title,
     this.decription,
-    this.color,
     this.campaignDataList,
     this._eventCard,
   );
@@ -26,18 +24,9 @@ class TabWidget extends StatefulWidget {
 }
 
 class _TabWidgetState extends State<TabWidget> {
-  void changeColor() {
-    setState(() {
-      for (var i = 0; i < widget.campaignDataList.length; i++) {
-        widget._eventCard
-            .add(EventCard(widget.campaignDataList[i], widget.color));
-      }
-    });
-  }
-
   @override
   void initState() {
-    changeColor();
+    print("lengthhhhh: ${widget._eventCard.length}");
     super.initState();
   }
 
@@ -64,6 +53,7 @@ class _TabWidgetState extends State<TabWidget> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      SizedBox(height: 5),
                       Text(
                         widget.decription,
                         style: const TextStyle(
@@ -78,7 +68,7 @@ class _TabWidgetState extends State<TabWidget> {
                       "See all >",
                       style: TextStyle(
                         fontSize: 15,
-                        color: Colors.blueAccent,
+                        color: Color(0xff575FCC),
                       ),
                     ),
                   )
@@ -86,7 +76,7 @@ class _TabWidgetState extends State<TabWidget> {
               ),
             ),
             // cac event
-            SizedBox(height: 25),
+            SizedBox(height: 18),
             Container(
               height: 250,
               child: ListView.builder(

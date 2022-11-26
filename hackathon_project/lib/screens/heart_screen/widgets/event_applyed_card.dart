@@ -30,7 +30,7 @@ class EventApplyedCard extends StatelessWidget {
           child: Container(
             height: 300,
             decoration: BoxDecoration(
-              color: Colors.greenAccent,
+              color: Color(0xff61C5A0),
               borderRadius: BorderRadius.circular(15),
             ),
             child: Column(

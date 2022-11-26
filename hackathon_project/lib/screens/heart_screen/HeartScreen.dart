@@ -58,36 +58,6 @@ class _HeartScreen extends State<HeartScreen> {
     );
   }
 
-  // Future<void> getCampaign() async {
-  //   EasyLoading.show(maskType: EasyLoadingMaskType.black);
-  //   try {
-  //     await ApiService.create().getCampaignList().then((dataItem) {
-  //       bool? success = dataItem.success;
-  //       if (success == true) {
-  //         _eventDataList = dataItem.data!;
-  //         //campaignDataList.clear();
-  //         setState(() {
-  //           for (var i = 0; i < _eventDataList.length; i++) {
-  //             _eventApplyedCards.add(EventApplyedCard(_eventDataList[i]));
-  //           }
-  //         });
-  //       }
-  //     });
-  //   } catch (obj) {
-  //     print("${obj}");
-  //     switch (obj.runtimeType) {
-  //       case DioError:
-  //         // Here's the sample to get the failed response error code and message
-  //         final res = (obj as DioError).response;
-  //         print(res!.statusCode);
-  //         break;
-  //       default:
-  //     }
-  //   } finally {
-  //     EasyLoading.dismiss();
-  //   }
-  // }
-
   Future<void> getProfile() async {
     EasyLoading.show(maskType: EasyLoadingMaskType.black);
     try {

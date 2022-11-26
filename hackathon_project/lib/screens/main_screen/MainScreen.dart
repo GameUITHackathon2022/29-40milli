@@ -5,7 +5,6 @@ import 'package:hackathon_project/screens/heart_screen/HeartScreen.dart';
 import 'package:hackathon_project/screens/homepage_screen/HomepageScreen.dart';
 import 'package:hackathon_project/screens/lightbulb_screen/LightbulbScreen.dart';
 
-
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -66,7 +65,7 @@ class _MainScreen extends State<MainScreen> {
           iconDownLoad(Icons.calendar_month),
           iconDownLoad(Icons.account_circle_outlined),
         ],
-        color: Colors.greenAccent,
+        color: Color(0xff61C5A0),
         backgroundColor: Colors.transparent,
         animationDuration: const Duration(milliseconds: 500),
         index: _selectedIndex,

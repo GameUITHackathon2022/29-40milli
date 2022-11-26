@@ -22,7 +22,7 @@ class _SearchBarState extends State<SearchBar> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: BoxDecoration(
-          color: Colors.greenAccent,
+          color: Color(0xff61C5A0),
           borderRadius: BorderRadius.circular(12),
         ),
         child: TextField(

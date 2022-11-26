@@ -6,7 +6,6 @@ import '../../../API services/API models/get campaign list/get_campaign_list_res
 class EventCard extends StatelessWidget {
   final Data campaignData;
   final Color color;
-
   EventCard(this.campaignData, this.color);
 
   @override
@@ -17,7 +16,7 @@ class EventCard extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: color,
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
@@ -34,7 +33,6 @@ class EventCard extends StatelessWidget {
             height: 200,
             width: 270,
             decoration: BoxDecoration(
-              color: color,
               borderRadius: BorderRadius.circular(15),
             ),
             child: Column(
