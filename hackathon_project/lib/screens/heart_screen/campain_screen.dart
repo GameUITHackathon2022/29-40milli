@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../../../API services/API models/get campaign list/get_campaign_list_response.dart';
+import '../../API services/API models/profile/get_profile_response.dart';
 
-class EventScreen extends StatelessWidget {
-  final Data campaignData;
-  EventScreen(
+class CampainScreen extends StatelessWidget {
+  final ParticipatedCampaign campaignData;
+  CampainScreen(
     this.campaignData,
-  );
-  TextStyle titleTextstyle = TextStyle(
-    fontSize: 18,
-    fontWeight: FontWeight.bold,
   );
   TextStyle inFoTextstyle = TextStyle(
     fontSize: 18,
@@ -57,10 +54,9 @@ class EventScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 25),
                 child: Column(children: [
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   Text(
                     campaignData.title as String,
-                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 30,
@@ -68,78 +64,36 @@ class EventScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 30),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          Icon(Icons.person_outline, size: 30),
-                          SizedBox(width: 10),
-                          Text(
+                      Text(
+                        "Date:  " + DateFormat.yMMMd().format(date).toString(),
+                        style: inFoTextstyle,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Text(
+                        "Location:  " + (campaignData.location as String),
+                        style: inFoTextstyle,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Text(
+                        "Num of member:  " +
                             campaignData.followers!.length.toString(),
-                            style: inFoTextstyle,
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: 40,
-                        width: 130,
-                        child: ElevatedButton(
-                          child: Text(
-                            "ENROLL",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          onPressed: () {},
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 20),
-                  Row(
-                    children: [
-                      Text(
-                        "Location:  ",
-                        style: titleTextstyle,
-                      ),
-                      Text(
-                        (campaignData.location as String),
                         style: inFoTextstyle,
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Text(
-                        "Date and time:  ",
-                        style: titleTextstyle,
-                      ),
-                      Text(
-                        DateFormat.yMMMMEEEEd().format(date).toString(),
-                        style: inFoTextstyle,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 20),
-                  Row(
-                    children: [
-                      Text(
-                        "Decription:  ",
-                        style: titleTextstyle,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.87,
-                        child: Text(
-                          campaignData.description as String,
-                          textAlign: TextAlign.start,
-                          style: inFoTextstyle,
-                        ),
-                      ),
-                    ],
+                  SizedBox(height: 30),
+                  Text(
+                    campaignData.description as String,
+                    style: inFoTextstyle,
                   ),
                 ]),
               )

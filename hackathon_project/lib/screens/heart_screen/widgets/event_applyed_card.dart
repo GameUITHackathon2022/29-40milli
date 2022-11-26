@@ -5,6 +5,14 @@ class EventApplyedCard extends StatelessWidget {
   final ParticipatedCampaign campaignData;
   EventApplyedCard(this.campaignData);
 
+  TextStyle titleTextstyle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+  );
+  TextStyle inFoTextstyle = TextStyle(
+    fontSize: 18,
+  );
+
   @override
   Widget build(BuildContext context) {
     var date =
@@ -85,7 +93,7 @@ class EventApplyedCard extends StatelessWidget {
                               Icon(Icons.access_time_outlined, size: 20),
                               SizedBox(width: 5),
                               Text(
-                                "${timeRemaining.inDays} days",
+                                "${timeRemaining.inDays} days ago",
                                 style: TextStyle(
                                     fontSize: 12,
                                     fontStyle: FontStyle.italic,

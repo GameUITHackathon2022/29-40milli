@@ -68,7 +68,14 @@ class _IdeaWidgetState extends State<IdeaWidget> {
                     backgroundImage: NetworkImage(widget.avtUrl),
                     radius: 25,
                   ),
-                  Text(widget.title),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Text(
+                      widget.title,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
                   IconButton(
                     onPressed: toggleFavouriteBtn,
                     icon: Icon(

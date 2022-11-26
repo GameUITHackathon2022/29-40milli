@@ -6,6 +6,8 @@ import 'package:hackathon_project/API%20services/API%20models/profile/get_profil
 import 'package:hackathon_project/API%20services/API%20models/profile/get_profile_response.dart';
 import 'package:hackathon_project/screens/heart_screen/widgets/my_app_bar.dart';
 import '../../API services/api_service.dart';
+import '../../utils/app_functions.dart';
+import 'campain_screen.dart';
 import 'widgets/event_applyed_card.dart';
 
 class HeartScreen extends StatefulWidget {
@@ -43,8 +45,8 @@ class _HeartScreen extends State<HeartScreen> {
                   itemBuilder: (context, index) {
                     return ScaleTap(
                         onPressed: () {
-                          // AppFunctions.pushToScreen(
-                          //     context, EventScreen(_eventDataList[index]));
+                          AppFunctions.pushToScreen(
+                              context, CampainScreen(_eventDataList[index]));
                         },
                         child: _eventApplyedCards[index]);
                   },
@@ -72,8 +74,12 @@ class _HeartScreen extends State<HeartScreen> {
               var date = DateTime.fromMillisecondsSinceEpoch(
                   _eventDataList[i].startTime as int);
               var timeRemaining = date.difference(DateTime.now());
-              if (date.compareTo(DateTime.now()) > 0)
+              if (date.compareTo(DateTime.now()) > 0) {
                 _eventApplyedCards.add(EventApplyedCard(_eventDataList[i]));
+              } else {
+                _eventDataList.remove(_eventDataList[i]);
+                i--;
+              }
             }
           });
         }

@@ -5,6 +5,8 @@ import 'package:hackathon_project/screens/heart_screen/HeartScreen.dart';
 import 'package:hackathon_project/screens/homepage_screen/HomepageScreen.dart';
 import 'package:hackathon_project/screens/lightbulb_screen/LightbulbScreen.dart';
 
+import '../idea_screen/idea_newsfeed_screen.dart';
+
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -51,7 +53,7 @@ class _MainScreen extends State<MainScreen> {
         child: IndexedStack(
           children: <Widget>[
             HomepageScreen(),
-            LightbulbScreen(),
+            IdeaNewsfeedScreen(),
             HeartScreen(),
             AccountScreen(),
           ],

@@ -59,7 +59,7 @@ class _CampaignsScreenState extends State<CampaignsScreen> {
           //campaignDataList.clear();
           setState(() {
             for (var i = 0; i < campaignDataList.length; i++) {
-              _eventCard.add(EventCard(campaignDataList[i]));
+              _eventCard.add(EventCard(campaignDataList[i], Color(0xff61C5A0)));
             }
           });
         }
