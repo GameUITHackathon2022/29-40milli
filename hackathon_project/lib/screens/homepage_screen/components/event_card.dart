@@ -3,14 +3,14 @@ import 'package:intl/intl.dart';
 
 class EventCard extends StatelessWidget {
   final String title;
-  final DateTime time;
+  final int time;
   final String imageuUrl;
-  final String host;
+  //final String host;
   final int numOfmenber;
   final String location;
 
-  EventCard(this.title, this.time, this.host, this.numOfmenber, this.location,
-      this.imageuUrl);
+  EventCard(
+      this.title, this.time, this.numOfmenber, this.location, this.imageuUrl);
 
   TextStyle inFoTextstyle = TextStyle(
     fontSize: 17,
@@ -18,6 +18,7 @@ class EventCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var date = new DateTime.fromMicrosecondsSinceEpoch(time);
     return Padding(
       padding: const EdgeInsets.only(right: 15),
       child: ClipRRect(
@@ -34,7 +35,7 @@ class EventCard extends StatelessWidget {
               Container(
                 height: 150,
                 width: 270,
-                child: Image.asset(
+                child: Image.network(
                   imageuUrl,
                   fit: BoxFit.cover,
                 ),
@@ -53,13 +54,13 @@ class EventCard extends StatelessWidget {
                       style: inFoTextstyle,
                     ),
                     Text(
-                      DateFormat.yMMMd().format(time).toString(),
+                      DateFormat.yMMMd().format(date).toString(),
                       style: inFoTextstyle,
                     ),
-                    Text(
-                      host,
-                      style: inFoTextstyle,
-                    ),
+                    // Text(
+                    //   host,
+                    //   style: inFoTextstyle,
+                    // ),
                     SizedBox(height: 5),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

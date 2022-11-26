@@ -33,17 +33,19 @@ class Data {
   String? description;
   int? startTime;
   String? image;
+  String? location;
   List<String>? followers;
   int? iV;
 
   Data(
       {this.sId,
-        this.title,
-        this.description,
-        this.startTime,
-        this.image,
-        this.followers,
-        this.iV});
+      this.title,
+      this.description,
+      this.startTime,
+      this.image,
+      this.location,
+      this.followers,
+      this.iV});
 
   Data.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
@@ -51,6 +53,7 @@ class Data {
     description = json['description'];
     startTime = json['start_time'];
     image = json['image'];
+    location = json['location'];
     followers = json['followers'].cast<String>();
     iV = json['__v'];
   }
@@ -62,6 +65,7 @@ class Data {
     data['description'] = this.description;
     data['start_time'] = this.startTime;
     data['image'] = this.image;
+    data['location'] = this.location;
     data['followers'] = this.followers;
     data['__v'] = this.iV;
     return data;
