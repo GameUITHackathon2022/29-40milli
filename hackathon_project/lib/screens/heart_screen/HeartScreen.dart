@@ -1,4 +1,14 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_scale_tap/flutter_scale_tap.dart';
+import 'package:hackathon_project/screens/heart_screen/widgets/event_applyed_card.dart';
+import 'package:hackathon_project/screens/heart_screen/widgets/my_app_bar.dart';
+import 'package:hackathon_project/API%20services/API%20models/get%20campaign%20list/get_campaign_list_response.dart';
+
+import '../../API services/api_service.dart';
+import '../../utils/app_functions.dart';
+import '../homepage_screen/event_screen.dart';
 
 class HeartScreen extends StatefulWidget {
   const HeartScreen({super.key});
@@ -8,8 +18,13 @@ class HeartScreen extends StatefulWidget {
 }
 
 class _HeartScreen extends State<HeartScreen> {
+  List<EventApplyedCard> _eventApplyedCards = [];
+  List<Data> _eventDataList = [];
+
   @override
   void initState() {
+    // TODO: implement initState
+    getCampaign();
     super.initState();
   }
 
@@ -17,14 +32,60 @@ class _HeartScreen extends State<HeartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Text(
-              'Heart screen',
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            MyAppBarCampain(),
+            SizedBox(height: 20),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    return ScaleTap(
+                        onPressed: () {
+                          AppFunctions.pushToScreen(
+                              context, EventScreen(_eventDataList[index]));
+                        },
+                        child: _eventApplyedCards[index]);
+                  },
+                  itemCount: _eventApplyedCards.length,
+                ),
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
+  }
+
+  Future<void> getCampaign() async {
+    EasyLoading.show(maskType: EasyLoadingMaskType.black);
+    try {
+      await ApiService.create().getCampaignList().then((dataItem) {
+        bool? success = dataItem.success;
+        if (success == true) {
+          _eventDataList = dataItem.data!;
+          //campaignDataList.clear();
+          setState(() {
+            for (var i = 0; i < _eventDataList.length; i++) {
+              _eventApplyedCards.add(EventApplyedCard(_eventDataList[i]));
+            }
+          });
+        }
+      });
+    } catch (obj) {
+      print("${obj}");
+      switch (obj.runtimeType) {
+        case DioError:
+          // Here's the sample to get the failed response error code and message
+          final res = (obj as DioError).response;
+          print(res!.statusCode);
+          break;
+        default:
+      }
+    } finally {
+      EasyLoading.dismiss();
+    }
   }
 }
