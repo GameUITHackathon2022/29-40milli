@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import '../../../API services/API models/get campaign list/get_campaign_list_response.dart';
+import 'package:hackathon_project/API%20services/API%20models/profile/get_profile_response.dart';
 
 class EventApplyedCard extends StatelessWidget {
-  final Data campaignData;
+  final ParticipatedCampaign campaignData;
   EventApplyedCard(this.campaignData);
 
   @override
