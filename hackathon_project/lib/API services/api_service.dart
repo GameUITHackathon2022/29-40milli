@@ -9,6 +9,8 @@ import 'package:hackathon_project/utils/constants.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:retrofit/http.dart';
 
+import 'API models/campaign/post_add_campaign_request.dart';
+import 'API models/campaign/post_add_campaign_response.dart';
 import 'API models/create user/create_user_request.dart';
 import 'API models/create user/create_user_response.dart';
 import 'API models/get campaign list/get_campaign_list_response.dart';
@@ -69,4 +71,7 @@ abstract class ApiService {
 
   @POST("/personal/profile")
   Future<GetProfileResponse> getProfile(@Body() GetProfileRequest getProfile);
+
+  @POST("/campaign/add_campaign")
+  Future<PostAddCampaignResponse> addCampaign(@Body() PostAddCampaignRequest addCampaign);
 }
