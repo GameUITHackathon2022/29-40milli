@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.green),
-      home: LoginScreen(),
+      home: MainScreen(),
       builder: EasyLoading.init(),
     );
   }
