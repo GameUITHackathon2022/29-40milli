@@ -9,17 +9,38 @@ import '../event_screen.dart';
 class TabWidget extends StatefulWidget {
   final String title;
   final String decription;
+  final Color color;
   List<Data> campaignDataList = [];
   List<EventCard> _eventCard = [];
 
   TabWidget(
-      this.title, this.decription, this.campaignDataList, this._eventCard);
+    this.title,
+    this.decription,
+    this.color,
+    this.campaignDataList,
+    this._eventCard,
+  );
 
   @override
   State<TabWidget> createState() => _TabWidgetState();
 }
 
 class _TabWidgetState extends State<TabWidget> {
+  void changeColor() {
+    setState(() {
+      for (var i = 0; i < widget.campaignDataList.length; i++) {
+        widget._eventCard
+            .add(EventCard(widget.campaignDataList[i], widget.color));
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    changeColor();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
