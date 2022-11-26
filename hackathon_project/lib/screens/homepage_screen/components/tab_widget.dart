@@ -13,13 +13,23 @@ class TabWidget extends StatefulWidget {
   List<EventCard> _eventCard = [];
 
   TabWidget(
-      this.title, this.decription, this.campaignDataList, this._eventCard);
+    this.title,
+    this.decription,
+    this.campaignDataList,
+    this._eventCard,
+  );
 
   @override
   State<TabWidget> createState() => _TabWidgetState();
 }
 
 class _TabWidgetState extends State<TabWidget> {
+  @override
+  void initState() {
+    print("lengthhhhh: ${widget._eventCard.length}");
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,6 +53,7 @@ class _TabWidgetState extends State<TabWidget> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      SizedBox(height: 5),
                       Text(
                         widget.decription,
                         style: const TextStyle(
@@ -57,7 +68,7 @@ class _TabWidgetState extends State<TabWidget> {
                       "See all >",
                       style: TextStyle(
                         fontSize: 15,
-                        color: Colors.blueAccent,
+                        color: Color(0xff575FCC),
                       ),
                     ),
                   )
@@ -65,7 +76,7 @@ class _TabWidgetState extends State<TabWidget> {
               ),
             ),
             // cac event
-            SizedBox(height: 25),
+            SizedBox(height: 18),
             Container(
               height: 250,
               child: ListView.builder(
