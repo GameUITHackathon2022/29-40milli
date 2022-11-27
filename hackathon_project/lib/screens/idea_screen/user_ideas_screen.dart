@@ -12,13 +12,13 @@ class UserIdeasScreen extends StatelessWidget {
     {
       'avtUrl': 'https://picsum.photos/id/237/200/300',
       "title": "Title",
-      'content': "Content",
+      'content': "Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content ",
       'isFavorite': false,
     },
     {
       'avtUrl': 'https://picsum.photos/id/237/200/300',
       "title": "Title",
-      'content': "Content",
+      'content': "Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content ",
       'isFavorite': false,
     },
   ];

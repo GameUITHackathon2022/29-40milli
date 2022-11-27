@@ -22,8 +22,11 @@ class _SearchBarState extends State<SearchBar> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: BoxDecoration(
-          color: Color(0xff61C5A0),
-          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: Color(0xffD7EDE3),
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(5),
         ),
         child: TextField(
           controller: findController,
@@ -39,6 +42,7 @@ class _SearchBarState extends State<SearchBar> {
             ),
             border: InputBorder.none,
             hintText: 'How can we help you?',
+            hintStyle: TextStyle(color: Color(0xffB3ABBC)),
           ),
         ),
       ),
