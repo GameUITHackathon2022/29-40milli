@@ -4,7 +4,10 @@ import 'package:hackathon_project/screens/account_screen/AccountScreen.dart';
 import 'package:hackathon_project/screens/heart_screen/HeartScreen.dart';
 import 'package:hackathon_project/screens/homepage_screen/HomepageScreen.dart';
 import 'package:hackathon_project/screens/lightbulb_screen/LightbulbScreen.dart';
+import 'package:hackathon_project/screens/user_profile/user_profile_screen.dart';
 
+import '../idea_screen/idea_newsfeed_screen.dart';
+import '../user_profile/user_profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -52,9 +55,9 @@ class _MainScreen extends State<MainScreen> {
         child: IndexedStack(
           children: <Widget>[
             HomepageScreen(),
-            LightbulbScreen(),
+            IdeaNewsfeedScreen(),
             HeartScreen(),
-            AccountScreen(),
+            UserProfileScreen(),
           ],
           index: _selectedIndex,
         ),
@@ -66,7 +69,7 @@ class _MainScreen extends State<MainScreen> {
           iconDownLoad(Icons.calendar_month),
           iconDownLoad(Icons.account_circle_outlined),
         ],
-        color: Colors.greenAccent,
+        color: Color(0xff61C5A0),
         backgroundColor: Colors.transparent,
         animationDuration: const Duration(milliseconds: 500),
         index: _selectedIndex,

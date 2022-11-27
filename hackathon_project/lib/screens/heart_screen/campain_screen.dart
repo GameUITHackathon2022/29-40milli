@@ -1,61 +1,25 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:hackathon_project/API%20services/API%20models/profile/get_profile_response.dart'
-    show ParticipatedCampaign;
 import 'package:intl/intl.dart';
 import '../../../API services/API models/get campaign list/get_campaign_list_response.dart';
-import '../../API services/API models/campaign/post_add_campaign_request.dart';
-import '../../API services/API models/profile/get_profile_request.dart';
-import '../../API services/api_service.dart';
-import '../../utils/app_functions.dart';
+import '../../API services/API models/profile/get_profile_response.dart';
 
-class EventScreen extends StatefulWidget {
-  final Data campaignData;
-  EventScreen(
+class CampainScreen extends StatelessWidget {
+  final ParticipatedCampaign campaignData;
+  CampainScreen(
     this.campaignData,
   );
-
-  @override
-  State<EventScreen> createState() => _EventScreenState();
-}
-
-class _EventScreenState extends State<EventScreen> {
-  List<ParticipatedCampaign> _eventDataList = [];
-  bool _check = false;
-
   TextStyle titleTextstyle = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.bold,
   );
-
   TextStyle inFoTextstyle = TextStyle(
     fontSize: 18,
   );
-
-  bool checkExit(String? id) {
-    print(id);
-    for (var i = 0; i < _eventDataList.length; i++) {
-      if (_eventDataList[i].sId == id) print("aaaa");
-    }
-    return false;
-  }
-
-  @override
-  void initState() {
-    getProfile();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    var date = DateTime.fromMillisecondsSinceEpoch(
-        widget.campaignData.startTime as int);
-    if (checkExit(widget.campaignData.sId)) {
-      _check = true;
-      setState(() {});
-    }
+    var date =
+        DateTime.fromMillisecondsSinceEpoch(campaignData.startTime as int);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -68,7 +32,7 @@ class _EventScreenState extends State<EventScreen> {
                     height: 300,
                     width: MediaQuery.of(context).size.width,
                     child: Image.network(
-                      widget.campaignData.image as String,
+                      campaignData.image as String,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -96,7 +60,7 @@ class _EventScreenState extends State<EventScreen> {
                 child: Column(children: [
                   SizedBox(height: 20),
                   Text(
-                    widget.campaignData.title as String,
+                    campaignData.title as String,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -112,7 +76,7 @@ class _EventScreenState extends State<EventScreen> {
                           Icon(Icons.person_outline, size: 30),
                           SizedBox(width: 10),
                           Text(
-                            widget.campaignData.followers!.length.toString(),
+                            campaignData.followers!.length.toString(),
                             style: inFoTextstyle,
                           ),
                         ],
@@ -122,17 +86,10 @@ class _EventScreenState extends State<EventScreen> {
                         width: 130,
                         child: ElevatedButton(
                           child: Text(
-                            "ENROLL",
+                            "ENROLLED",
                             style: TextStyle(color: Colors.white),
                           ),
-                          onPressed: _check == false
-                              ? () {
-                                  addCampaign(
-                                    "638236136d2971758705eb6f",
-                                    widget.campaignData.sId,
-                                  );
-                                }
-                              : null,
+                          onPressed: null,
                         ),
                       )
                     ],
@@ -145,7 +102,7 @@ class _EventScreenState extends State<EventScreen> {
                         style: titleTextstyle,
                       ),
                       Text(
-                        (widget.campaignData.location as String),
+                        (campaignData.location as String),
                         style: inFoTextstyle,
                       ),
                     ],
@@ -178,7 +135,7 @@ class _EventScreenState extends State<EventScreen> {
                       Container(
                         width: MediaQuery.of(context).size.width * 0.87,
                         child: Text(
-                          widget.campaignData.description as String,
+                          campaignData.description as String,
                           textAlign: TextAlign.start,
                           style: inFoTextstyle,
                         ),
@@ -192,55 +149,5 @@ class _EventScreenState extends State<EventScreen> {
         ),
       ),
     );
-  }
-
-  Future<void> addCampaign(String? userId, String? campaignId) async {
-    EasyLoading.show(maskType: EasyLoadingMaskType.black);
-    // showAlert(context);
-    try {
-      await ApiService.create()
-          .addCampaign(PostAddCampaignRequest(userId, campaignId))
-          .then((dataItem) {
-        AppFunctions.showAlert(dataItem.message.toString(), context);
-      });
-    } catch (obj) {
-      print("${obj}");
-      switch (obj.runtimeType) {
-        case DioError:
-          // Here's the sample to get the failed response error code and message
-          final res = (obj as DioError).response;
-          print(res!.statusCode);
-          break;
-        default:
-      }
-    } finally {
-      EasyLoading.dismiss();
-    }
-  }
-
-  Future<void> getProfile() async {
-    EasyLoading.show(maskType: EasyLoadingMaskType.black);
-    try {
-      await ApiService.create()
-          .getProfile(GetProfileRequest("minh12345"))
-          .then((dataItem) {
-        bool? success = dataItem.success;
-        if (success == true) {
-          _eventDataList = dataItem.data!.participatedCampaign!;
-        }
-      });
-    } catch (obj) {
-      print("${obj}");
-      switch (obj.runtimeType) {
-        case DioError:
-          // Here's the sample to get the failed response error code and message
-          final res = (obj as DioError).response;
-          print(res!.statusCode);
-          break;
-        default:
-      }
-    } finally {
-      EasyLoading.dismiss();
-    }
   }
 }

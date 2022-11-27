@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_scale_tap/flutter_scale_tap.dart';
 import 'package:hackathon_project/API%20services/API%20models/get%20campaign%20list/get_campaign_list_response.dart';
+import 'package:hackathon_project/screens/homepage_screen/all_event_screen.dart';
 import 'package:hackathon_project/screens/homepage_screen/components/event_card.dart';
 import 'package:hackathon_project/utils/app_functions.dart';
 
@@ -16,9 +17,9 @@ class TabWidget extends StatefulWidget {
   TabWidget(
     this.title,
     this.decription,
-    this.color,
     this.campaignDataList,
     this._eventCard,
+    this.color,
   );
 
   @override
@@ -26,18 +27,9 @@ class TabWidget extends StatefulWidget {
 }
 
 class _TabWidgetState extends State<TabWidget> {
-  void changeColor() {
-    setState(() {
-      for (var i = 0; i < widget.campaignDataList.length; i++) {
-        widget._eventCard
-            .add(EventCard(widget.campaignDataList[i], widget.color));
-      }
-    });
-  }
-
   @override
   void initState() {
-    changeColor();
+    print("lengthhhhh: ${widget._eventCard.length}");
     super.initState();
   }
 
@@ -60,25 +52,32 @@ class _TabWidgetState extends State<TabWidget> {
                       Text(
                         widget.title,
                         style: const TextStyle(
-                          fontSize: 16,
+                          fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      SizedBox(height: 5),
                       Text(
                         widget.decription,
                         style: const TextStyle(
-                          fontSize: 13,
+                          fontSize: 12,
+                          color: Color(0xff575FCC),
                         ),
                       ),
                     ],
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      AppFunctions.pushToScreen(
+                          context,
+                          AllEventScreen(widget.title, widget.campaignDataList,
+                              widget.color));
+                    },
                     child: const Text(
                       "See all >",
                       style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.blueAccent,
+                        fontSize: 16,
+                        color: Colors.black,
                       ),
                     ),
                   )
@@ -86,7 +85,7 @@ class _TabWidgetState extends State<TabWidget> {
               ),
             ),
             // cac event
-            SizedBox(height: 25),
+            SizedBox(height: 18),
             Container(
               height: 250,
               child: ListView.builder(

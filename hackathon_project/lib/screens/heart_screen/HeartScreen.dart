@@ -6,6 +6,8 @@ import 'package:hackathon_project/API%20services/API%20models/profile/get_profil
 import 'package:hackathon_project/API%20services/API%20models/profile/get_profile_response.dart';
 import 'package:hackathon_project/screens/heart_screen/widgets/my_app_bar.dart';
 import '../../API services/api_service.dart';
+import '../../utils/app_functions.dart';
+import 'campain_screen.dart';
 import 'widgets/event_applyed_card.dart';
 
 class HeartScreen extends StatefulWidget {
@@ -30,65 +32,40 @@ class _HeartScreen extends State<HeartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(height: 20),
-            MyAppBarCampain(),
-            SizedBox(height: 20),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: ListView.builder(
-                  itemBuilder: (context, index) {
-                    return ScaleTap(
-                        onPressed: () {
-                          // AppFunctions.pushToScreen(
-                          //     context, EventScreen(_eventDataList[index]));
-                        },
-                        child: _eventApplyedCards[index]);
-                  },
-                  itemCount: _eventApplyedCards.length,
+      body: RefreshIndicator(
+        onRefresh: () => getProfile(),
+        child: SafeArea(
+          child: Column(
+            children: [
+              SizedBox(height: 20),
+              MyAppBarCampain("Your campaigns"),
+              SizedBox(height: 20),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      return ScaleTap(
+                          onPressed: () {
+                            AppFunctions.pushToScreen(
+                                context, CampainScreen(_eventDataList[index]));
+                          },
+                          child: _eventApplyedCards[index]);
+                    },
+                    itemCount: _eventApplyedCards.length,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
-  // Future<void> getCampaign() async {
-  //   EasyLoading.show(maskType: EasyLoadingMaskType.black);
-  //   try {
-  //     await ApiService.create().getCampaignList().then((dataItem) {
-  //       bool? success = dataItem.success;
-  //       if (success == true) {
-  //         _eventDataList = dataItem.data!;
-  //         //campaignDataList.clear();
-  //         setState(() {
-  //           for (var i = 0; i < _eventDataList.length; i++) {
-  //             _eventApplyedCards.add(EventApplyedCard(_eventDataList[i]));
-  //           }
-  //         });
-  //       }
-  //     });
-  //   } catch (obj) {
-  //     print("${obj}");
-  //     switch (obj.runtimeType) {
-  //       case DioError:
-  //         // Here's the sample to get the failed response error code and message
-  //         final res = (obj as DioError).response;
-  //         print(res!.statusCode);
-  //         break;
-  //       default:
-  //     }
-  //   } finally {
-  //     EasyLoading.dismiss();
-  //   }
-  // }
-
   Future<void> getProfile() async {
+    _eventDataList.clear();
+    _eventApplyedCards.clear();
     EasyLoading.show(maskType: EasyLoadingMaskType.black);
     try {
       await ApiService.create()
@@ -99,7 +76,14 @@ class _HeartScreen extends State<HeartScreen> {
           _eventDataList = dataItem.data!.participatedCampaign!;
           setState(() {
             for (var i = 0; i < _eventDataList.length; i++) {
-              _eventApplyedCards.add(EventApplyedCard(_eventDataList[i]));
+              var date = DateTime.fromMillisecondsSinceEpoch(
+                  _eventDataList[i].startTime as int);
+              if (date.compareTo(DateTime.now()) >= 0) {
+                _eventApplyedCards.add(EventApplyedCard(_eventDataList[i]));
+              } else {
+                _eventDataList.remove(_eventDataList[i]);
+                i--;
+              }
             }
           });
         }

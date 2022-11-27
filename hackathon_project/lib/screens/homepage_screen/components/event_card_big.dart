@@ -2,24 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../API services/API models/get campaign list/get_campaign_list_response.dart';
 
-class EventCard extends StatelessWidget {
+class EventCardBig extends StatelessWidget {
   final Data campaignData;
   final Color color;
-  EventCard(this.campaignData, this.color);
+  EventCardBig(this.campaignData, this.color);
+
+  TextStyle titleTextstyle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+  );
+  TextStyle inFoTextstyle = TextStyle(
+    fontSize: 18,
+  );
 
   @override
   Widget build(BuildContext context) {
     var date =
         DateTime.fromMillisecondsSinceEpoch(campaignData.startTime as int);
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+      padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
       child: Container(
         decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.15),
+              color: Colors.grey.withOpacity(0.5),
               spreadRadius: 3,
               blurRadius: 3,
               offset: Offset(0, 1), // changes position of shadow
@@ -27,17 +35,18 @@ class EventCard extends StatelessWidget {
           ],
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(15),
           child: Container(
-            width: 270,
+            height: 330,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
+              color: color,
+              borderRadius: BorderRadius.circular(15),
             ),
             child: Column(
               children: [
                 Container(
-                  height: 150,
-                  width: 270,
+                  height: 200,
+                  width: MediaQuery.of(context).size.width * 0.9,
                   child: Image.network(
                     "${campaignData.image}",
                     fit: BoxFit.cover,
@@ -52,38 +61,44 @@ class EventCard extends StatelessWidget {
                       Text(
                         "${campaignData.title}",
                         style: TextStyle(
-                            fontSize: 16,
-                            color: Color(0xff190134),
-                            fontWeight: FontWeight.w700),
-                        overflow: TextOverflow.ellipsis,
+                            fontSize: 18,
+                            color: Colors.blue[900],
+                            fontWeight: FontWeight.w500),
                       ),
-                      SizedBox(height: 5),
+                      SizedBox(height: 10),
                       Text(
-                        DateFormat.yMMMd().format(date).toString(),
-                        //date.toString(),
+                        "Participants: ${campaignData.followers?.length}",
                         style: TextStyle(
-                          color: Color(0xff190134),
-                          fontSize: 12,
+                          fontSize: 15,
                         ),
                       ),
-                      SizedBox(height: 5),
+                      SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "${campaignData.location}",
-                            style: TextStyle(
-                                fontSize: 12, color: Color(0xff190134)),
+                          Row(
+                            children: [
+                              Icon(Icons.location_on_outlined, size: 20),
+                              SizedBox(width: 5),
+                              Text(
+                                "${campaignData.location}",
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    fontStyle: FontStyle.italic,
+                                    color: Colors.blueGrey),
+                              ),
+                            ],
                           ),
                           Row(
                             children: [
-                              Icon(Icons.person, size: 20),
+                              Icon(Icons.access_time_outlined, size: 20),
                               SizedBox(width: 5),
                               Text(
-                                "${campaignData.followers?.length}",
+                                DateFormat.yMMMd().format(date).toString(),
                                 style: TextStyle(
-                                  fontSize: 12,
-                                ),
+                                    fontSize: 12,
+                                    fontStyle: FontStyle.italic,
+                                    color: Colors.blueGrey),
                               ),
                             ],
                           ),
