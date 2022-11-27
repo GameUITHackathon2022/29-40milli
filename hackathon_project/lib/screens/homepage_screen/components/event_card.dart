@@ -29,7 +29,6 @@ class EventCard extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: Container(
-            height: 200,
             width: 270,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
@@ -56,6 +55,7 @@ class EventCard extends StatelessWidget {
                             fontSize: 16,
                             color: Color(0xff190134),
                             fontWeight: FontWeight.w700),
+                        overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(height: 5),
                       Text(

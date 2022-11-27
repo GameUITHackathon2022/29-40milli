@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_project/screens/login_screen/LoginScreen.dart';
 import 'package:hackathon_project/screens/main_screen/MainScreen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'intro_screen1.dart';
@@ -76,7 +77,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => MainScreen(),
+                              builder: (context) => LoginScreen(),
                               /* HomePage(
                                 backToPageOneOfOnBoarding:
                                     backToPageOneOfOnBoarding,
