@@ -93,7 +93,7 @@ class EventApplyedCard extends StatelessWidget {
                               Icon(Icons.access_time_outlined, size: 20),
                               SizedBox(width: 5),
                               Text(
-                                "${timeRemaining.inDays} days ago",
+                                "${timeRemaining.inDays} days later",
                                 style: TextStyle(
                                     fontSize: 12,
                                     fontStyle: FontStyle.italic,

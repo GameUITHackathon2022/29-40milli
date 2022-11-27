@@ -11,22 +11,19 @@ import 'package:hackathon_project/screens/user_profile/liked_ideas_screen.dart';
 import 'package:hackathon_project/screens/user_profile/widgets/profile_appbar.dart';
 
 class UserProfileScreen extends StatefulWidget {
-  bool isAchievementScreen = true;
-  String? _userName;
-  String? _userAge;
-  String? _userLocation;
-  UserProfileScreen({super.key});
-
   @override
   State<UserProfileScreen> createState() => _UserProfileScreenState();
 }
 
 class _UserProfileScreenState extends State<UserProfileScreen> {
+  String _userName = "";
+  int _userAge = 0;
+  String _userLocation = "";
+  bool isAchievementScreen = true;
+
   @override
   void initState() {
     getProfile();
-    setState(() {});
-    // TODO: implement initState
     super.initState();
   }
 
@@ -49,7 +46,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     style: TextStyle(fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    widget._userName == null ? "Hieu Ngan" : widget._userName!,
+                    _userName,
                   ),
                   SizedBox(
                     height: 10,
@@ -58,7 +55,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     "Age",
                     style: TextStyle(fontWeight: FontWeight.w600),
                   ),
-                  Text(widget._userAge == null ? "18" : widget._userAge!),
+                  Text(_userAge.toString()),
                   SizedBox(
                     height: 10,
                   ),
@@ -66,9 +63,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     "Location",
                     style: TextStyle(fontWeight: FontWeight.w600),
                   ),
-                  Text(widget._userLocation == null
-                      ? "Tp Ho Chi Minh"
-                      : widget._userLocation!),
+                  Text(_userLocation),
                 ],
               ),
               SizedBox(
@@ -97,11 +92,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 onTap: (index) {
                   if (index == 0)
                     setState(() {
-                      widget.isAchievementScreen = true;
+                      isAchievementScreen = true;
                     });
                   else
                     setState(() {
-                      widget.isAchievementScreen = false;
+                      isAchievementScreen = false;
                     });
                 },
                 tabs: [
@@ -122,7 +117,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           SizedBox(
             height: 20,
           ),
-          widget.isAchievementScreen ? AchievementsScreen() : LikedIdeasScreen()
+          isAchievementScreen ? AchievementsScreen() : LikedIdeasScreen()
         ]),
       ),
     );
@@ -136,11 +131,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           .then((dataItem) {
         bool? success = dataItem.success;
         if (success == true) {
-          print(dataItem.data?.age);
+          print(dataItem.data?.age.toString());
           setState(() {
-            widget._userAge = dataItem.data?.age.toString();
-            widget._userLocation = dataItem.data?.location;
-            widget._userName = dataItem.data?.name;
+            _userAge = dataItem.data?.age as int;
+            _userLocation = dataItem.data?.location as String;
+            _userName = dataItem.data?.name as String;
           });
         }
       });

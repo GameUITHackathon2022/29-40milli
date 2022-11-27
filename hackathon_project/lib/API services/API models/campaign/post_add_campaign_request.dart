@@ -2,7 +2,7 @@ class PostAddCampaignRequest {
   String? userId;
   String? addedCampaignId;
 
-  PostAddCampaignRequest({this.userId, this.addedCampaignId});
+  PostAddCampaignRequest(this.userId, this.addedCampaignId);
 
   PostAddCampaignRequest.fromJson(Map<String, dynamic> json) {
     userId = json['user_id'];
