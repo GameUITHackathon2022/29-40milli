@@ -1,5 +1,6 @@
 # 29-40milli
-
+## Mô tả
+eCamp là nền tảng mobile app dành cho những người dùng muốn nắm bắt thông tin về các sự kiện tình nguyện và đóng góp ý tưởng để duy trì và xây dựng một cộng đồng tình nguyện xanh lớn.
 ## Công nghệ sử dụng
 - FE: Flutter
 - BE: Nodejs
