@@ -4,7 +4,8 @@
 - FE: Flutter
 - BE: Nodejs
 - Database: MongoDB
-
+## link file apk
+https://drive.google.com/drive/folders/1aYia6T4ylcVF83MsXRze2a5HtAJ7gImo?usp=sharing
 ## Chức năng chính
 1. Nắm bắt thông tin, theo dõi các chiến dịch tình nguyện ở lân cận và các địa phương khác từ tổ chức uy tín
 2. Đăng kí và theo dõi tham gia các chiến dịch tình nguyện
