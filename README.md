@@ -1,4 +1,8 @@
-# 29-40milli
+# Project eCamp
+
+## Mô tả
+eCamp là nền tảng mobile app dành cho những người dùng muốn nắm bắt thông tin về các sự kiện tình nguyện và đóng góp ý tưởng để duy trì và xây dựng một cộng đồng tình nguyện xanh lớn.
+Link apk: 
 
 ## Công nghệ sử dụng
 - FE: Flutter
@@ -23,3 +27,6 @@
 5. Your campaigns
     - Hiển thị những chiến dịch đã đăng kí
 6. User's profile
+
+## Other stuffs:
+- Figma: https://tinyurl.com/yckwc4ua
