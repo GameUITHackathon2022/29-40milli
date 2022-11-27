@@ -52,7 +52,7 @@ class _TabWidgetState extends State<TabWidget> {
                       Text(
                         widget.title,
                         style: const TextStyle(
-                          fontSize: 16,
+                          fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -60,7 +60,8 @@ class _TabWidgetState extends State<TabWidget> {
                       Text(
                         widget.decription,
                         style: const TextStyle(
-                          fontSize: 13,
+                          fontSize: 12,
+                          color: Color(0xff575FCC),
                         ),
                       ),
                     ],
@@ -75,8 +76,8 @@ class _TabWidgetState extends State<TabWidget> {
                     child: const Text(
                       "See all >",
                       style: TextStyle(
-                        fontSize: 15,
-                        color: Color(0xff575FCC),
+                        fontSize: 16,
+                        color: Colors.black,
                       ),
                     ),
                   )

@@ -32,35 +32,40 @@ class _HeartScreen extends State<HeartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(height: 20),
-            MyAppBarCampain("Your campaigns"),
-            SizedBox(height: 20),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: ListView.builder(
-                  itemBuilder: (context, index) {
-                    return ScaleTap(
-                        onPressed: () {
-                          AppFunctions.pushToScreen(
-                              context, CampainScreen(_eventDataList[index]));
-                        },
-                        child: _eventApplyedCards[index]);
-                  },
-                  itemCount: _eventApplyedCards.length,
+      body: RefreshIndicator(
+        onRefresh: () => getProfile(),
+        child: SafeArea(
+          child: Column(
+            children: [
+              SizedBox(height: 20),
+              MyAppBarCampain("Your campaigns"),
+              SizedBox(height: 20),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      return ScaleTap(
+                          onPressed: () {
+                            AppFunctions.pushToScreen(
+                                context, CampainScreen(_eventDataList[index]));
+                          },
+                          child: _eventApplyedCards[index]);
+                    },
+                    itemCount: _eventApplyedCards.length,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
   Future<void> getProfile() async {
+    _eventDataList.clear();
+    _eventApplyedCards.clear();
     EasyLoading.show(maskType: EasyLoadingMaskType.black);
     try {
       await ApiService.create()
@@ -73,8 +78,7 @@ class _HeartScreen extends State<HeartScreen> {
             for (var i = 0; i < _eventDataList.length; i++) {
               var date = DateTime.fromMillisecondsSinceEpoch(
                   _eventDataList[i].startTime as int);
-              var timeRemaining = date.difference(DateTime.now());
-              if (date.compareTo(DateTime.now()) > 0) {
+              if (date.compareTo(DateTime.now()) >= 0) {
                 _eventApplyedCards.add(EventApplyedCard(_eventDataList[i]));
               } else {
                 _eventDataList.remove(_eventDataList[i]);

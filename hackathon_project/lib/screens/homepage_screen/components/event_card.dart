@@ -16,10 +16,10 @@ class EventCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withOpacity(0.15),
               spreadRadius: 3,
               blurRadius: 3,
               offset: Offset(0, 1), // changes position of shadow
@@ -27,12 +27,11 @@ class EventCard extends StatelessWidget {
           ],
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(20),
           child: Container(
-            height: 200,
             width: 270,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(20),
             ),
             child: Column(
               children: [
@@ -53,15 +52,17 @@ class EventCard extends StatelessWidget {
                       Text(
                         "${campaignData.title}",
                         style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.blue[900],
-                            fontWeight: FontWeight.w500),
+                            fontSize: 16,
+                            color: Color(0xff190134),
+                            fontWeight: FontWeight.w700),
+                        overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(height: 5),
                       Text(
                         DateFormat.yMMMd().format(date).toString(),
                         //date.toString(),
                         style: TextStyle(
+                          color: Color(0xff190134),
                           fontSize: 12,
                         ),
                       ),
@@ -72,9 +73,7 @@ class EventCard extends StatelessWidget {
                           Text(
                             "${campaignData.location}",
                             style: TextStyle(
-                                fontSize: 12,
-                                fontStyle: FontStyle.italic,
-                                color: Colors.blueGrey),
+                                fontSize: 12, color: Color(0xff190134)),
                           ),
                           Row(
                             children: [
