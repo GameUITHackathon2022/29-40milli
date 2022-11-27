@@ -1,12 +1,14 @@
-# 29-40milli
+# Project eCamp
+
 ## Mô tả
 eCamp là nền tảng mobile app dành cho những người dùng muốn nắm bắt thông tin về các sự kiện tình nguyện và đóng góp ý tưởng để duy trì và xây dựng một cộng đồng tình nguyện xanh lớn.
+Link apk: 
+
 ## Công nghệ sử dụng
 - FE: Flutter
 - BE: Nodejs
 - Database: MongoDB
-## link file apk
-https://drive.google.com/drive/folders/1aYia6T4ylcVF83MsXRze2a5HtAJ7gImo?usp=sharing
+
 ## Chức năng chính
 1. Nắm bắt thông tin, theo dõi các chiến dịch tình nguyện ở lân cận và các địa phương khác từ tổ chức uy tín
 2. Đăng kí và theo dõi tham gia các chiến dịch tình nguyện
@@ -25,3 +27,6 @@ https://drive.google.com/drive/folders/1aYia6T4ylcVF83MsXRze2a5HtAJ7gImo?usp=sha
 5. Your campaigns
     - Hiển thị những chiến dịch đã đăng kí
 6. User's profile
+
+## Other stuffs:
+- Figma: https://tinyurl.com/m8zh2av8
