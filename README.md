@@ -29,4 +29,4 @@ Link apk:
 6. User's profile
 
 ## Other stuffs:
-- Figma: https://tinyurl.com/yckwc4ua
+- Figma: https://tinyurl.com/m8zh2av8
