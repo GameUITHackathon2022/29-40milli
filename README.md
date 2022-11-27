@@ -2,7 +2,8 @@
 
 ## Mô tả
 eCamp là nền tảng mobile app dành cho những người dùng muốn nắm bắt thông tin về các sự kiện tình nguyện và đóng góp ý tưởng để duy trì và xây dựng một cộng đồng tình nguyện xanh lớn.
-Link apk: 
+Link apk: https://drive.google.com/drive/folders/1aYia6T4ylcVF83MsXRze2a5HtAJ7gImo?usp=sharing
+
 
 ## Công nghệ sử dụng
 - FE: Flutter
