@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.green),
-      home: MainScreen(),
+      home: Splash(),
       builder: EasyLoading.init(),
     );
   }
@@ -49,7 +49,7 @@ class _SplashState extends State<Splash> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Image.asset(
-          "assets/splash_screen.png",
+          "assets/splash_screen_2.png",
           fit: BoxFit.cover,
         ),
       ),
