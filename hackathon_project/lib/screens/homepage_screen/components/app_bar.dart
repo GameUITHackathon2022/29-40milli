@@ -19,13 +19,6 @@ class MyAppBar extends StatelessWidget {
               IconButton(
                 onPressed: () {},
                 icon: Icon(
-                  Icons.add_box_outlined,
-                  color: Color(0xffFFA074),
-                ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
                   Icons.notifications,
                   color: Color(0xffFFA074),
                 ),
