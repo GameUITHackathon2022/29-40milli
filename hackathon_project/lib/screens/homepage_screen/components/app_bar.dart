@@ -20,14 +20,14 @@ class MyAppBar extends StatelessWidget {
                 onPressed: () {},
                 icon: Icon(
                   Icons.add_box_outlined,
-                  color: Color(0xffFF6D3B),
+                  color: Color(0xffFFA074),
                 ),
               ),
               IconButton(
                 onPressed: () {},
                 icon: Icon(
                   Icons.notifications,
-                  color: Color(0xffFF6D3B),
+                  color: Color(0xffFFA074),
                 ),
               ),
             ],

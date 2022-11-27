@@ -97,6 +97,10 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/lightbulb.png
+    - assets/3dot.png
+
+
 
   fonts:
     - family: MontserratMedium

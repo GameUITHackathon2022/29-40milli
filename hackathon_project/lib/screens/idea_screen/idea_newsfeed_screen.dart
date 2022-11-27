@@ -9,6 +9,7 @@ import 'package:hackathon_project/screens/idea_screen/components/button.dart';
 import 'package:hackathon_project/screens/idea_screen/components/idea_widget.dart';
 import 'package:hackathon_project/screens/idea_screen/new_idea_screen.dart';
 import 'package:hackathon_project/screens/idea_screen/user_ideas_screen.dart';
+import 'components/app_bar_1.dart';
 
 import '../../API services/API models/idea/get_idea_response.dart';
 
@@ -21,6 +22,7 @@ class IdeaNewsfeedScreen extends StatefulWidget {
 
 class _IdeaNewsfeedScreenState extends State<IdeaNewsfeedScreen> {
   List<Data> ideaList = [];
+  String avtUrl = 'https://picsum.photos/id/237/200/300';
 
   Future<void> getIdea() async {
     EasyLoading.show(maskType: EasyLoadingMaskType.black);
@@ -59,15 +61,26 @@ class _IdeaNewsfeedScreenState extends State<IdeaNewsfeedScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Idea View"), backgroundColor: Colors.green),
       body: Column(
         children: [
+          const SizedBox(height: 20),
+          MyAppBar1(),
           SizedBox(
             height: 100,
             child: Row(
               children: [
-                NavigatorButton(text: "Add", screen: NewIdeaScreen()),
-                NavigatorButton(text: "My Idea", screen: UserIdeasScreen())
+                NavigatorButton(
+                    text: "Add Idea",
+                    screen: NewIdeaScreen(),
+                    bgcolor: 0xffFABF48,
+                    assets: 'assets/3dot.png',
+                    w: 30),
+                NavigatorButton(
+                    text: "My Idea",
+                    screen: UserIdeasScreen(),
+                    bgcolor: 0xff739EF1,
+                    assets: 'assets/lightbulb.png',
+                    w: 30)
               ],
             ),
           ),
@@ -79,7 +92,7 @@ class _IdeaNewsfeedScreenState extends State<IdeaNewsfeedScreen> {
                       child: Container(
                         margin: EdgeInsets.all(15),
                         child: IdeaWidget(
-                            avtUrl: ideaList[index].userImage.toString(),
+                            avtUrl: this.avtUrl,
                             title: ideaList[index].title as String,
                             content: ideaList[index].description as String,
                             isFavorite: false),
